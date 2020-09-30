@@ -1,0 +1,22 @@
+{
+  "name": "md-if-engine",
+  "version": "0.1.0",
+  "description": "Markdown like interactive fiction engine",
+  "main": "src/main.js",
+  "scripts": {
+    "dry": "node -r esm dryrun/run.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matalina/md-if-engine.git"
+  },
+  "author": "Alicia Wilkerson <alicia@akddev.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/matalina/md-if-engine/issues"
+  },
+  "homepage": "https://github.com/matalina/md-if-engine#readme",
+  "dependencies": {
+    "esm": "^3.2.25"
+  }
+}
