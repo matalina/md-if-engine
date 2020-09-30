@@ -18,8 +18,8 @@ let parser = {
 
     breakBlocks(markdown, options = {}) {
         let blocks = markdown.split("\n\n");
-        let tag = null;
-        let content = block;
+        let tag;
+        let content;
 
         let nodes = blocks.map((block, index) => {
             if(block.startsWith('#')) {
@@ -30,6 +30,7 @@ let parser = {
             }
             else { // is paragraph
                 tag = 'p';
+                content = block;
             }
 
             return {
@@ -42,7 +43,9 @@ let parser = {
     },
 
     breakInline(content, options = {}) {
+        
 
+        return content;
     },
     
     generateHTML(nodes, options = {}) {
