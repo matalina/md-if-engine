@@ -47,6 +47,7 @@ let parser = {
     
     generateHTML(nodes, options = {}) {
         return nodes.reduce((output, node) => {
+            let content;
             if(typeof node.content === 'string') {
                 content = node.content;
             }
