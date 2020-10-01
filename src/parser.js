@@ -23,10 +23,7 @@ let parser = {
 
         let nodes = blocks.map((block, index) => {
             if(block.startsWith('#')) {
-                let { t, c } = this._getHeading(block);
-                tag = t;
-                content = c;
-                
+                return this._getHeading(block);
             }
             else { // is paragraph
                 tag = 'p';
@@ -50,10 +47,13 @@ let parser = {
     
     generateHTML(nodes, options = {}) {
         return nodes.reduce((output, node) => {
-            let content = node.content;
-            if(node.children !== undefined) {
-                // generate children nodes html
+            if(typeof node.content === 'string') {
+                content = node.content;
             }
+            else {
+                content = this.generateHTML(node.content, options);
+            }
+            
             let string = `${output}<${node.tag}>${content}</${node.tag}>\n\n`;
             
             return string;
@@ -73,7 +73,8 @@ let parser = {
 
         return {
             tag,
-            content: heading,
+            content: this.breakInline(heading),
+            attributes: null,
         };
     }
 
